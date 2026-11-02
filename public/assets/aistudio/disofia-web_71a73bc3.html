@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DISOFIA: Dialéctica Socrática y Filosofía como Forma de Vida</title>
+  <style>
+    :root {
+      --primary: #8B1E24; /* Rojo académico / UNAV */
+      --secondary: #1E293B; /* Azul oscuro pizarra */
+      --bg-light: #F8FAFC;
+      --text-main: #334155;
+      --border: #E2E8F0;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      color: var(--text-main);
+      line-height: 1.6;
+      background-color: #ffffff;
+    }
+    h1, h2, h3, h4, .sans {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    /* Navegación */
+    nav {
+      background-color: var(--secondary);
+      color: #fff;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      color: #fff;
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: #CBD5E1;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+    /* Cabecera / Hero */
+    header {
+      background: linear-gradient(135deg, var(--secondary) 0%, #0F172A 100%);
+      color: white;
+      padding: 4.5rem 2rem;
+      text-align: center;
+      border-bottom: 5px solid var(--primary);
+    }
+    .hero-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      background-color: var(--primary);
+      color: #fff;
+      padding: 0.35rem 0.85rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #CBD5E1;
+      max-width: 750px;
+      margin: 0 auto;
+    }
+    /* Barra de Logos Oficiales */
+    .logos-bar {
+      background-color: var(--bg-light);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 2rem;
+    }
+    .logos-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      align-items: center;
+      text-align: center;
+    }
+    .logo-placeholder {
+      border: 2px dashed #94A3B8;
+      background: #fff;
+      padding: 1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: #64748B;
+      font-weight: 600;
+    }
+    /* Secciones Principales */
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+    section {
+      margin-bottom: 4.5rem;
+      scroll-margin-top: 4rem;
+    }
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--secondary);
+      border-bottom: 3px solid var(--primary);
+      display: inline-block;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.5rem;
+    }
+    p.lead {
+      font-size: 1.15rem;
+      margin-bottom: 1.25rem;
+      color: #1E293B;
+    }
+    /* Tarjetas de Líneas de Investigación */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--primary);
+      border-radius: 6px;
+      padding: 1.75rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+    }
+    .card h3 {
+      color: var(--secondary);
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
+    /* Equipo */
+    .team-group {
+      margin-bottom: 2rem;
+    }
+    .team-group h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid var(--secondary);
+      padding-left: 0.75rem;
+    }
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      list-style: none;
+    }
+    .team-member {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 1rem;
+      border-radius: 6px;
+    }
+    .team-member strong {
+      display: block;
+      color: var(--secondary);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .team-member span {
+      font-size: 0.9rem;
+      color: #64748B;
+    }
+    /* Tabla de Colaboradores */
+    .table-container {
+      overflow-x: auto;
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 0.85rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background-color: var(--secondary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    tr:nth-child(even) {
+      background-color: var(--bg-light);
+    }
+    /* Actividades y Seminarios */
+    .highlight-box {
+      background-color: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-left: 5px solid var(--primary);
+      padding: 1.75rem;
+      border-radius: 6px;
+      margin: 1.5rem 0;
+    }
+    .highlight-box h4 {
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+    .reading-list {
+      margin-left: 1.5rem;
+      margin-top: 0.75rem;
+    }
+    .reading-list li {
+      margin-bottom: 0.5rem;
+    }
+    /* Ficha Técnica */
+    .specs-dl {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 0.75rem 1.5rem;
+      background: var(--bg-light);
+      padding: 2rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+    }
+    .specs-dl dt {
+      font-weight: 700;
+      color: var(--secondary);
+    }
+    @media (max-width: 650px) {
+      .specs-dl {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 1.9rem;
+      }
+    }
+    footer {
+      background-color: var(--secondary);
+      color: #94A3B8;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Barra de Navegación -->
+  <nav class="sans">
+    <div class="nav-container">
+      <a href="#" class="nav-brand">PROYECTO DISOFIA</a>
+      <ul class="nav-links">
+        <li><a href="#presentacion">Presentación</a></li>
+        <li><a href="#lineas">Líneas de Investigación</a></li>
+        <li><a href="#equipo">Equipo</a></li>
+        <li><a href="#colaboradores">Red Internacional</a></li>
+        <li><a href="#actividades">Actividades y Seminarios</a></li>
+        <li><a href="#datos">Datos Oficiales</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Cabecera Principal -->
+  <header>
+    <div class="hero-container">
+      <span class="badge sans">Proyecto PID2025-168764NB-I00 (2026–2029)</span>
+      <h1>DISOFIA: Dialéctica Socrática y Filosofía como Forma de Vida</h1>
+      <p class="sans">Financiado por la Agencia Estatal de Investigación (AEI) y el Ministerio de Ciencia, Innovación y Universidades (Cofinanciado por la Unión Europea)</p>
+    </div>
+  </header>
+
+  <!-- Franja de Logos Oficiales -->
+  <div class="logos-bar sans">
+    <div class="logos-grid">
+      <div class="logo-placeholder">[ Insertar Logo: Ministerio de Ciencia, Innovación y Universidades ]</div>
+      <div class="logo-placeholder">[ Insertar Logo: Agencia Estatal de Investigación (AEI) ]</div>
+      <div class="logo-placeholder">[ Insertar Logo: Cofinanciado por la Unión Europea ]</div>
+      <div class="logo-placeholder">[ Insertar Logo: Universidad de Navarra ]</div>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <main>
+
+    <!-- 1. Presentación -->
+    <section id="presentacion">
+      <h2 class="section-title">1. Presentación del Proyecto</h2>
+      <p class="lead">
+        El proyecto de investigación <strong>DISOFIA: Dialéctica socrática y filosofía como forma de vida</strong> propone un estudio sistemático de la dialéctica socrática como una práctica filosófica unitaria que integra de manera inseparable la investigación racional, la transformación existencial del sujeto y la transmisión de un modo de vida.
+      </p>
+      <p>
+        Frente a la fragmentación de los estudios socráticos tradicionales y a ciertas interpretaciones de la Filosofía como Forma de Vida (FFV) que relegan el papel de la argumentación lógica, DISOFIA parte de la hipótesis de que el examen dialógico socrático es el lugar privilegiado donde se articulan el rigor epistémico, el cuidado de sí (<em>epimeleia heautou</em>) y el compromiso con la comunidad.
+      </p>
+
+      <div id="lineas" style="margin-top: 3rem;">
+        <h3 class="sans" style="font-size: 1.4rem; color: var(--secondary); margin-bottom: 1rem;">Líneas Principales de Investigación</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <h3>Línea 1: Dialéctica e ignorancia como autoengaño</h3>
+            <p>Estudio del examen socrático como un proceso de autoesclarecimiento, analizando la estructura autoocultante del error y el papel de la aporía como motor de transformación racional.</p>
+          </div>
+          <div class="card">
+            <h3>Línea 2: Dialéctica y afectividad</h3>
+            <p>Análisis del papel constitutivo de emociones como la perplejidad, la vergüenza, la admiración, el <em>eros</em> y la amistad en la dinámica del diálogo filosófico.</p>
+          </div>
+          <div class="card">
+            <h3>Línea 3: Dialéctica y transmisión</h3>
+            <p>Investigación de las dimensiones pedagógicas y políticas de la <em>paideia</em> socrática, así como la reconstrucción de su recepción en las tradiciones antiguas y en la filosofía contemporánea (analítica y continental).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Equipo del Proyecto -->
+    <section id="equipo">
+      <h2 class="section-title">2. Equipo del Proyecto</h2>
+
+      <div class="team-group">
+        <h3>Investigadores Principales (IPs)</h3>
+        <ul class="team-list">
+          <li class="team-member">
+            <strong>Miquel Solans Blasco (IP1)</strong>
+            <span>Universidad de Navarra (UNAV)</span>
+          </li>
+          <li class="team-member">
+            <strong>Miguel Martí Severies (IP2)</strong>
+            <span>Universidad Francisco de Vitoria (UFV)</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="team-group">
+        <h3>Equipo de Investigación (EI)</h3>
+        <ul class="team-list">
+          <li class="team-member">
+            <strong>Daniel Doyle Sánchez</strong>
+            <span>Universidad de Navarra (UNAV)</span>
+          </li>
+          <li class="team-member">
+            <strong>Iván de los Ríos</strong>
+            <span>Universidad Autónoma de Madrid (UAM)</span>
+          </li>
+          <li class="team-member">
+            <strong>David Torrijos Castrillejo</strong>
+            <span>Universidad Eclesiástica San Dámaso (UESD)</span>
+          </li>
+          <li class="team-member">
+            <strong>Marcela Duque</strong>
+            <span>Universidad Francisco de Vitoria (UFV)</span>
+          </li>
+          <li class="team-member">
+            <strong>Vojtech Kolomy</strong>
+            <span>Universidad de Navarra (UNAV)</span>
+          </li>
+          <li class="team-member">
+            <strong>Inmaculada Hoyos</strong>
+            <span>Universidad de Granada (UGR)</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="team-group">
+        <h3>Doctorandos / Investigadores en Formación</h3>
+        <ul class="team-list">
+          <li class="team-member"><strong>María Arévalo</strong></li>
+          <li class="team-member"><strong>María S.</strong></li>
+          <li class="team-member"><strong>Mikel M.</strong></li>
+          <li class="team-member"><strong>Marc</strong></li>
+          <li class="team-member"><strong>Jaz</strong></li>
+          <li class="team-member"><strong>Bruno Rossi</strong></li>
+          <li class="team-member"><strong>Orestes</strong></li>
+          <li class="team-member"><strong>Gonzalo Capapé</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 3. Colaboradores Internacionales -->
+    <section id="colaboradores">
+      <h2 class="section-title">3. Colaboradores Internacionales (Equipo de Trabajo)</h2>
+      <p>DISOFIA reúne a una red internacional de especialistas de reconocido prestigio en filosofía antigua y ética:</p>
+
+      <div class="table-container">
+        <table>
+          <thead class="sans">
+            <tr>
+              <th>Investigador/a</th>
+              <th>Institución</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>John Sellars</td><td>Royal Holloway, University of London</td></tr>
+            <tr><td>Katja Vogt</td><td>Columbia University</td></tr>
+            <tr><td>Noburu Notomi</td><td>University of Tokyo</td></tr>
+            <tr><td>Frisbee Sheffield</td><td>University of Cambridge</td></tr>
+            <tr><td>Alejandro G. Vigo</td><td>Universidad de los Andes</td></tr>
+            <tr><td>Marcelo D. Boeri</td><td>Pontificia Universidad Católica de Chile</td></tr>
+            <tr><td>Javier Aoiz</td><td>Universidad de Santiago de Chile</td></tr>
+            <tr><td>Cristina Ionescu</td><td>The Catholic University of America (CUA)</td></tr>
+            <tr><td>Kristian Larsen</td><td>NTNU (Noruega)</td></tr>
+            <tr><td>Jacob Klein</td><td>Colgate University</td></tr>
+            <tr><td>Ariel Vecchio</td><td>UNSAM / CONICET</td></tr>
+            <tr><td>José Antonio Giménez</td><td>Universidad de los Andes</td></tr>
+            <tr><td>Daniel Vázquez</td><td>Mary Immaculate College</td></tr>
+            <tr><td>Santiago Chame</td><td>Ludwig-Maximilians-Universität München (LMU)</td></tr>
+            <tr><td>Gabriela Rossi</td><td>Universidad de los Andes</td></tr>
+            <tr><td>Claudia Carbonell</td><td>Universidad de Piura</td></tr>
+            <tr><td>José Alberto Ross</td><td>Universidad Panamericana</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 4. Actividades en Curso y Seminarios -->
+    <section id="actividades">
+      <h2 class="section-title">4. Actividades en Curso y Seminarios</h2>
+      
+      <h3 class="sans" style="color: var(--secondary); margin-bottom: 0.5rem;">Seminario Permanente de Lectura DISOFIA (Curso 2026–2027)</h3>
+      <p><strong>Lugar:</strong> Seminario del Departamento de Filosofía (Aula 2280), Universidad de Navarra.<br>
+      <strong>Contacto e Información:</strong> Daniel Doyle (<a href="mailto:ddoyle@unav.es">ddoyle@unav.es</a>) y Miquel Solans (<a href="mailto:msolans@unav.es">msolans@unav.es</a>).</p>
+
+      <div class="highlight-box">
+        <h4 class="sans">Próxima Sesión Inaugural</h4>
+        <p><strong>Fecha y Hora:</strong> Miércoles, 4 de noviembre de 2026 | 12:00 – 13:30 h.<br>
+        <strong>Lectura:</strong> Agnes Callard, <em>Sócrates al descubierto</em> (Kairós, 2025).<br>
+        <strong>Ponente:</strong> Miguel Martí (Universidad Francisco de Vitoria).</p>
+      </div>
+
+      <h4 class="sans" style="margin-top: 1.5rem; color: var(--secondary);">Programa y Lecturas del Seminario:</h4>
+      <ul class="reading-list">
+        <li>A. Callard, <em>Sócrates al descubierto</em>, Kairós, Barcelona, 2025.</li>
+        <li>D. Futter, <em>Socrates' Search for Wisdom. An Exegetical Theory</em>, Routledge, 2025.</li>
+        <li>P. Hadot, <em>¿Qué es la filosofía antigua?</em>, FCE, México, 2000.</li>
+        <li>P. Hadot, <em>Ejercicios espirituales y filosofía antigua</em>, Siruela, Madrid, 2006.</li>
+        <li>Seminario de traducción e interpretación: Platón, <em>República</em> I.</li>
+      </ul>
+
+      <h3 class="sans" style="color: var(--secondary); margin-top: 2.5rem; margin-bottom: 1rem;">Congresos y Workshops Previstos</h3>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>I Workshop Internacional DISOFIA</h3>
+          <p><strong>Tema:</strong> Dialéctica y filosofía como forma de vida en Sócrates.<br>
+          <strong>Fecha y lugar:</strong> Abril de 2027, Universidad de Navarra.</p>
+        </div>
+        <div class="card">
+          <h3>II Workshop Internacional DISOFIA</h3>
+          <p><strong>Tema:</strong> Afectos, ignorancia y comunidad dialógica.<br>
+          <strong>Fecha prevista:</strong> 2028.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Datos Oficiales -->
+    <section id="datos">
+      <h2 class="section-title">5. Datos Oficiales del Proyecto</h2>
+      <dl class="specs-dl">
+        <dt class="sans">Título completo:</dt>
+        <dd>Dialéctica socrática y filosofía como forma de vida</dd>
+        
+        <dt class="sans">Acrónimo:</dt>
+        <dd>DISOFIA</dd>
+        
+        <dt class="sans">Referencia Oficial (AEI):</dt>
+        <dd>PID2025-168764NB-I00</dd>
+        
+        <dt class="sans">Duración:</dt>
+        <dd>1 de septiembre de 2026 – 31 de agosto de 2029</dd>
+        
+        <dt class="sans">Entidad Ejecutora:</dt>
+        <dd>Universidad de Navarra (Departamento de Filosofía)</dd>
+        
+        <dt class="sans">Entidad Financiadora:</dt>
+        <dd>Agencia Estatal de Investigación (AEI) - Ministerio de Ciencia, Innovación y Universidades / Fondo Social Europeo / UE</dd>
+      </dl>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="sans">
+    <p><strong>Proyecto DISOFIA (PID2025-168764NB-I00)</strong> · Departamento de Filosofía · Universidad de Navarra</p>
+    <p style="margin-top: 0.5rem;">Financiado por MCIN/AEI /10.13039/501100011033 y cofinanciado por la Unión Europea</p>
+  </footer>
+
+</body>
+</html>

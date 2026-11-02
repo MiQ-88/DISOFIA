@@ -1,0 +1,6 @@
+{
+  "name": "DISOFIA - Dialéctica Socrática y Filosofía como Forma de Vida",
+  "description": "Portal oficial del Proyecto de Investigación DISOFIA (PID2025-168764NB-I00, Universidad de Navarra / UFV / AEI / UE).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

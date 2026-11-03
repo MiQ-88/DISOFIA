@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Calendar, Layers, Menu, X } from 'lucide-react';
+import { Layers, Menu, X } from 'lucide-react';
 
 interface NavbarProps {
   onOpenGoogleSitesModal: () => void;
@@ -52,31 +52,12 @@ export function Navbar({ onOpenGoogleSitesModal, onOpenContactModal }: NavbarPro
             ))}
           </nav>
 
-          {/* Zone 3: 1 primary action + Google Sites integration trigger */}
-          <div className="flex items-center gap-3 shrink-0">
-            <button
-              onClick={onOpenGoogleSitesModal}
-              type="button"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-stone-200 bg-stone-800/80 hover:bg-stone-700 rounded border border-stone-700 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-              title="Ver instrucciones y enlace para insertar en Google Sites"
-            >
-              <Layers className="w-3.5 h-3.5 text-red-400" />
-              <span>Modo Google Sites</span>
-            </button>
-
-            <a
-              href="#actividades"
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-semibold text-white bg-[#8B1E24] hover:bg-[#6C151A] rounded shadow-xs transition-colors whitespace-nowrap shrink-0"
-            >
-              <Calendar className="w-3.5 h-3.5" />
-              <span>Seminario Inaugural</span>
-            </a>
-
-            {/* Mobile hamburger button */}
+          {/* Mobile hamburger button */}
+          <div className="lg:hidden flex items-center shrink-0">
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 text-stone-300 hover:text-white focus:outline-none"
+              className="p-2 text-stone-300 hover:text-white focus:outline-none cursor-pointer"
               aria-label={mobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

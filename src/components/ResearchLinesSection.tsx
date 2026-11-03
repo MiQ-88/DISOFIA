@@ -9,7 +9,7 @@ export function ResearchLinesSection() {
 
   return (
     <section id="lineas" className="py-16 sm:py-20 bg-stone-50/60 border-b border-stone-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="mb-12">

@@ -44,7 +44,7 @@ export function InternationalNetworkSection() {
 
   return (
     <section id="colaboradores" className="py-16 sm:py-20 bg-stone-50/70 border-b border-stone-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="mb-10">

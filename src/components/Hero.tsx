@@ -74,28 +74,52 @@ export function Hero({ onExploreLines, onExploreSeminar, onNavigate }: HeroProps
         </figure>
 
         {/* Project Title and Header Presentation */}
-        <div className="space-y-4 mb-8">
-          <div>
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-2.5">
-              <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-red-400 font-bold px-2.5 py-0.5 rounded bg-red-950/80 border border-red-800/80 shadow-xs">
-                {DISOFIA_METADATA.acronym}
-              </span>
-              <span className="font-mono text-xs sm:text-sm text-stone-300 font-semibold px-2 py-0.5 rounded bg-stone-900/90 border border-stone-700/80">
-                {DISOFIA_METADATA.reference}
+        <div className="w-full space-y-4 mb-8 text-center flex flex-col items-center">
+          <div className="w-full flex flex-col items-center">
+            <div className="w-full flex flex-wrap md:flex-nowrap items-center justify-between gap-3 mb-3">
+              <span
+                className="font-mono px-2.5 py-0.5 rounded bg-stone-900/90 border border-[#8B1E24]/80 shadow-xs shrink-0 whitespace-nowrap inline-flex items-center gap-2"
+                style={{ fontSize: '17px' }}
+              >
+                <span className="uppercase tracking-widest text-red-400 font-bold">
+                  {DISOFIA_METADATA.acronym}
+                </span>
+                <span className="text-stone-600 font-normal" aria-hidden="true">&middot;</span>
+                <span className="text-stone-300 font-semibold">
+                  {DISOFIA_METADATA.reference}
+                </span>
               </span>
               <span
-                className="font-mono text-stone-300 font-semibold"
-                style={{ fontSize: '15px' }}
+                className="font-mono text-stone-300 font-semibold shrink-0 whitespace-nowrap"
+                style={{ fontSize: '17px' }}
               >
                 {DISOFIA_METADATA.period}
               </span>
-              <span className="text-xs sm:text-sm text-stone-300 font-medium ml-1 sm:ml-2 pl-2 sm:pl-3 border-l border-stone-700/80">
+              <span
+                className="text-stone-300 font-medium text-right shrink-0"
+                style={{ fontSize: '17px' }}
+              >
                 Universidad de Navarra &middot; Facultad de Filosofía y Letras &middot; Departamento de Filosofía
               </span>
             </div>
+
+            <div
+              className="tracking-widest uppercase font-semibold my-2 text-center flex items-center justify-center gap-3"
+              style={{
+                fontFamily: '"Plus Jakarta Sans", sans-serif',
+                fontSize: '19px',
+                color: '#cbc9c8',
+                height: '34.5px',
+              }}
+            >
+              <span className="inline-block w-8 sm:w-10 h-[1.5px] bg-[#cbc9c8]/90" aria-hidden="true" />
+              <span>PROYECTO DE INVESTIGACIÓN</span>
+              <span className="inline-block w-8 sm:w-10 h-[1.5px] bg-[#cbc9c8]/90" aria-hidden="true" />
+            </div>
+
             <h1
-              className="font-serif font-bold text-white tracking-tight leading-[1.1] w-full"
-              style={{ fontSize: '62px' }}
+              className="font-serif font-bold text-white tracking-tight leading-[1.1] w-full text-center"
+              style={{ fontSize: '65px' }}
             >
               {DISOFIA_METADATA.title}
             </h1>
@@ -103,99 +127,120 @@ export function Hero({ onExploreLines, onExploreSeminar, onNavigate }: HeroProps
 
           {/* Executive Summary */}
           <p
-            className="text-stone-200 font-light leading-relaxed max-w-full"
+            className="text-stone-200 font-light leading-relaxed mx-auto text-center"
             style={{ fontSize: '20px', width: '918px', maxWidth: '100%' }}
           >
             {DISOFIA_METADATA.executiveSummary}
           </p>
         </div>
 
-        {/* Cuatro botones de navegación entre el subtítulo y los cuatro paneles */}
-        <div className="flex flex-wrap items-center gap-3 sm:gap-4 my-8">
+        {/* Barra de navegación unificada en un solo panel continuo */}
+        <div className="w-full my-8 bg-stone-900/90 border border-stone-700/90 rounded-lg backdrop-blur-xs shadow-md overflow-hidden grid grid-cols-2 sm:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-stone-700/80">
           <button
             type="button"
             onClick={() => scrollToTarget('presentacion')}
-            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold text-white bg-[#8B1E24] hover:bg-[#6C151A] transition-all shadow-md hover:shadow-lg cursor-pointer border border-[#A5282F]"
+            className="w-full h-12 flex items-center justify-center gap-2 px-3 sm:px-4 text-xs sm:text-sm font-semibold text-white hover:bg-stone-800/80 transition-colors cursor-pointer"
           >
-            <BookOpen className="w-4 h-4 text-red-200" />
-            <span>Presentación</span>
+            <BookOpen className="w-4 h-4 text-red-500 shrink-0" />
+            <span className="truncate">Presentación</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollToTarget('lineas')}
-            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold text-stone-100 bg-stone-900/90 hover:bg-stone-800 border border-stone-700/90 hover:border-stone-500 backdrop-blur-xs transition-all shadow-sm hover:shadow-md cursor-pointer hover:text-white"
+            className="w-full h-12 flex items-center justify-center gap-2 px-3 sm:px-4 text-xs sm:text-sm font-semibold text-stone-100 hover:text-white hover:bg-stone-800/80 transition-colors cursor-pointer"
           >
-            <Compass className="w-4 h-4 text-amber-300" />
-            <span>Líneas de investigación</span>
+            <Compass className="w-4 h-4 text-amber-300 shrink-0" />
+            <span className="truncate">Líneas de investigación</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollToTarget('equipo')}
-            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold text-stone-100 bg-stone-900/90 hover:bg-stone-800 border border-stone-700/90 hover:border-stone-500 backdrop-blur-xs transition-all shadow-sm hover:shadow-md cursor-pointer hover:text-white"
+            className="w-full h-12 flex items-center justify-center gap-2 px-3 sm:px-4 text-xs sm:text-sm font-semibold text-stone-100 hover:text-white hover:bg-stone-800/80 transition-colors cursor-pointer"
           >
-            <Users className="w-4 h-4 text-sky-300" />
-            <span>Equipo de investigación</span>
+            <Users className="w-4 h-4 text-sky-300 shrink-0" />
+            <span className="truncate">Equipo de investigación</span>
           </button>
 
           <button
             type="button"
             onClick={() => scrollToTarget('actividades')}
-            className="inline-flex items-center gap-2.5 px-5 py-3 rounded-lg text-xs sm:text-sm font-semibold text-stone-100 bg-stone-900/90 hover:bg-stone-800 border border-stone-700/90 hover:border-stone-500 backdrop-blur-xs transition-all shadow-sm hover:shadow-md cursor-pointer hover:text-white"
+            className="w-full h-12 flex items-center justify-center gap-2 px-3 sm:px-4 text-xs sm:text-sm font-semibold text-stone-100 hover:text-white hover:bg-stone-800/80 transition-colors cursor-pointer"
           >
-            <Calendar className="w-4 h-4 text-emerald-300" />
-            <span>Actividades</span>
+            <Calendar className="w-4 h-4 text-emerald-300 shrink-0" />
+            <span className="truncate">Actividades</span>
           </button>
         </div>
 
-        {/* Full-width Quantitative Project Indicators Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6 border-t border-stone-800/80">
-          <div className="bg-[#8B1E24]/[0.04] border border-[#8B1E24]/35 hover:border-[#8B1E24]/60 transition-colors rounded p-3">
-            <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums">
-              3 Años
+        {/* Quantitative Project Indicators Strip: clean text with red dividers */}
+        <div className="w-full pt-6 border-t border-stone-800/80">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full">
+            {/* 1. 3 Años */}
+            <div className="relative p-2 sm:p-3 flex flex-col items-center justify-center text-center">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums text-center">
+                3 Años
+              </div>
+              <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono text-center">
+                2026 – 2029 (Tipo B)
+              </div>
+              <div className="text-[11px] text-stone-400 mt-0.5 text-center">
+                Investigación no orientada
+              </div>
+              {/* Red vertical divider */}
+              <div
+                aria-hidden="true"
+                className="absolute -right-2 top-1/2 -translate-y-1/2 w-[2.5px] h-[38px] bg-[#8B1E24] rounded-full"
+              />
             </div>
-            <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono">
-              2026 – 2029 (Tipo B)
-            </div>
-            <div className="text-[11px] text-stone-400 mt-0.5">
-              Investigación no orientada
-            </div>
-          </div>
 
-          <div className="bg-[#8B1E24]/[0.04] border border-[#8B1E24]/35 hover:border-[#8B1E24]/60 transition-colors rounded p-3">
-            <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums">
-              7 Investigadores
+            {/* 2. 7 Investigadores */}
+            <div className="relative p-2 sm:p-3 flex flex-col items-center justify-center text-center">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums text-center">
+                7 Investigadores
+              </div>
+              <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono text-center">
+                UNAV, UAM, UFV, USD
+              </div>
+              <div className="text-[11px] text-stone-400 mt-0.5 text-center">
+                IPs y Equipo de Investigación
+              </div>
+              {/* Red vertical divider on desktop */}
+              <div
+                aria-hidden="true"
+                className="hidden sm:block absolute -right-2 top-1/2 -translate-y-1/2 w-[2.5px] h-[38px] bg-[#8B1E24] rounded-full"
+              />
             </div>
-            <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono">
-              UNAV, UAM, UFV, USD
-            </div>
-            <div className="text-[11px] text-stone-400 mt-0.5">
-              IPs y Equipo de Investigación
-            </div>
-          </div>
 
-          <div className="bg-[#8B1E24]/[0.04] border border-[#8B1E24]/35 hover:border-[#8B1E24]/60 transition-colors rounded p-3">
-            <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums">
-              17 Expertos
+            {/* 3. 17 Expertos */}
+            <div className="relative p-2 sm:p-3 flex flex-col items-center justify-center text-center">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums text-center">
+                17 Expertos
+              </div>
+              <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono text-center">
+                Internacionales
+              </div>
+              <div className="text-[11px] text-stone-400 mt-0.5 text-center">
+                De 10 países
+              </div>
+              {/* Red vertical divider */}
+              <div
+                aria-hidden="true"
+                className="absolute -right-2 top-1/2 -translate-y-1/2 w-[2.5px] h-[38px] bg-[#8B1E24] rounded-full"
+              />
             </div>
-            <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono">
-              Internacionales
-            </div>
-            <div className="text-[11px] text-stone-400 mt-0.5">
-              De 10 países
-            </div>
-          </div>
 
-          <div className="bg-[#8B1E24]/[0.04] border border-[#8B1E24]/35 hover:border-[#8B1E24]/60 transition-colors rounded p-3">
-            <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums">
-              7 Investigadores
-            </div>
-            <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono">
-              Doctorales
-            </div>
-            <div className="text-[11px] text-stone-400 mt-0.5">
-              Nacionales e internacionales
+            {/* 4. 5 Investigadores */}
+            <div className="relative p-2 sm:p-3 flex flex-col items-center justify-center text-center">
+              <div className="text-2xl sm:text-3xl font-serif font-bold text-white tabular-nums text-center">
+                5 Investigadores
+              </div>
+              <div className="text-xs text-stone-300 uppercase tracking-wider mt-1 font-mono text-center">
+                Doctorales
+              </div>
+              <div className="text-[11px] text-stone-400 mt-0.5 text-center">
+                Nacionales e internacionales
+              </div>
             </div>
           </div>
         </div>
